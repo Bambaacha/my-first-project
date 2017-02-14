@@ -55,10 +55,17 @@ for($i = 1; $i <= 100; $i++)
     $arr[] = $startZahl;
     $startZahl++;
     $anzahlZeilen++;
-    if(($anzahlZeilen % 10) == 0)
+    if(!empty($arr[99]))
     {
         ?>
-    </tr><tr>
+        </tr>
+        <?php
+    }
+    else if (($anzahlZeilen % 10) == 0)
+    {
+        ?>
+        </tr>
+        <tr>
         <?php
     }
 }

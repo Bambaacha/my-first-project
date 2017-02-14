@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Formular</title>
+    <style>
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        form td:first-child{
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <form action="formular_v2.php" method="post">
+        <table>
+            <tr>
+                <td>Ihr Name:</td>
+                <td><input type="text" name="name"/></td>
+            </tr>
+            <tr>
+                <td>Ihre Zimmer Nr:</td>
+                <td><input type="text" name="zimmerNr"/></td>
+            </tr>
+            <tr></tr>
+            <tr>
+                <td>Welchen Käse wünschen Sie?</td>
+                <td><input type="checkbox" name="chxCa" value="Camembert"/>Camembert</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="checkbox" name="chxEm" value="Emmentaler">Emmentaler</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="checkbox" name="chxEd" value="Edamer">Edamer</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="checkbox" name="chxKr" value="Kraversal">Kraversal</td>
+            </tr>
+            <tr>
+                <td>Haben Sie einen weiteren Wunsch?</td>
+                <td><input type="text" name="wunsch"></td>
+            </tr>
+            <tr>
+                <td>Ihr Zahlungswunsch:</td>
+                <td>
+                    <select name="optZahlArt" size="1">
+                        <option value="Bei Lieferung">Bei Lieferung</option>
+                        <option value="Überweisung">Überweisung</option>
+                        <option selected="selected" value="Pay Pal">Pay Pal</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <hr>
+        <center>
+            Bestellung<input type="submit" name="btnAbschicken" value="Abschicken"/><input type="reset" name="btnVerwerfen" value="Verwerfen"/>
+        </center>
+    </form>
+</body>
+</html>

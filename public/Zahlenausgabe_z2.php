@@ -25,7 +25,6 @@
  * Time: 14:27
  */
 $arr = array();
-$counterPrimzahlen = 0;
 $startZahl = 13;
 $anzahlZeilen = 0;
 
@@ -39,6 +38,7 @@ for($i = 0; $i < 100; $i++)
     { //all divisible factors
         if($startZahl % $j == 0)
         {
+            $counterPrimzahlen = 0;
             $counter++;
         }
     }
@@ -47,11 +47,12 @@ for($i = 0; $i < 100; $i++)
     {
         $arrValue[$startZahl] = "true";
         $counterPrimzahlen++;
+        var_dump($counter);
 //@todo
-        if($arrValue[$startZahl+10] == "true")
+        if($arrValue[$startZahl] == "true" && $arrValue[$startZahl] + 10)
         {
             ?>
-            <td rowspan="2" style="background-color: #0000F0"><?=$startZahl?></td>
+            <td rowspan="2" style="background-color: #0000F0"><?=$startZahl?></td><td><?=$startZahl?></td>
             <?php
         }
         else
@@ -79,7 +80,6 @@ for($i = 0; $i < 100; $i++)
         <?php
     }
 }
-        print_r($arrValue);
 ?>
         </table>
         <br>
