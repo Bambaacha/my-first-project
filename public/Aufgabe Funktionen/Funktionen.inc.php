@@ -5,36 +5,47 @@
  * Date: 21.02.17
  * Time: 10:48
  */
-function bubbleSort($items)
+function bubbleSort($array)
 {
-	$size = count($items);
+	$size = count($array);
 	
 	for ($i=0; $i<$size; $i++)
 	{
 		for ($j=0; $j < $size-1-$i; $j++)
 		{
-			if ($items[$j+1] < $items[$j])
+			if ($array[$j+1] < $array[$j])
 			{
-				$temp = $items[$j];
-				$items[$j] = $items[$j +1];
-				$items[$j +1] = $temp;
+				$temp = $array[$j];
+				$array[$j] = $array[$j +1];
+				$array[$j +1] = $temp;
 			}
 		}
 	}
-	return $items;
+	return $array;
 }
 
 function countArrayValues($array, $value)
 {
 	$counter = 0;
 
-	foreach($array as $actvalue) /*go through every value in the array*/
+	foreach($array as $activeValue)
 	{
-		if($actvalue === $value)
+		if($activeValue === $value)
 		{
-			$counter++; /*increase the count by 1*/
+			$counter++;
 		}
 	}
-
 	return $counter;
+}
+
+function numberArrayUnique($array)
+{
+	$arrayNumbers = array();
+	$size = count($array);
+	
+	for($i = 0; $i < $size; $i++)
+	{
+		$arrayNumbers[$array[$i]] = $array[$i];
+	}
+	return $arrayNumbers;
 }
