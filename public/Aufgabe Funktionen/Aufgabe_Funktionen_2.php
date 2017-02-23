@@ -28,17 +28,14 @@
 	html {
 		text-align: center;
 	}
-
 	table {
 		margin-top: 20px;
 		width: 131px;
 	}
-
 	td {
 		width: 60px;
 		text-align: center;
 	}
-
 	input[name="btnSort"],
 	input[name="btnReset"]{
 		width: 131px;
@@ -60,9 +57,9 @@
 			<?php
 			if(!empty($_SESSION['myNewArray']))
 			{
-				$arrayZahlen = numberArrayUnique($_SESSION['myNewArray']);
+				$arrayNumbers = numberArrayUnique($_SESSION['myNewArray']);
 
-				foreach($arrayZahlen as $value)
+				foreach($arrayNumbers as $value)
 				{
 					?>
 					<tr>
