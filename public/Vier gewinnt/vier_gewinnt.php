@@ -7,7 +7,7 @@
  */
 	session_start();
 	include('vier_gewinnt.inc.php');
-unset($_SESSION['rowCol']);
+	unset($_SESSION['rowCol']);
 ?>
 <html lang="en">
 	<head>
@@ -39,58 +39,103 @@ unset($_SESSION['rowCol']);
 			<p><h1>Vier gewinnt</h1></p>
 			<table class="table" border="1" align="center">
 				<?php
-				if(true)
+
+				for($i = 1; $i <= 6; $i++)
 				{
-					for($i = 1; $i <= 6; $i++)
-					{
-						for($z = 1; $z <= 7; $z++)
-						{
-							$myarr = array($i, $z);
-
-							$_SESSION['rowCol'][] = $myarr;
-
-
-							?>
-							<tr id="row<?=$_SESSION['rowCol'][$i]?>">
-								<td id="column<?=$_SESSION['rowCol'][$i][$z]?>"
-							<?php
-						}
-						?>
-							</tr>
+				?>
+					<tr id="row<?=$i?>">
 					<?php
+					for($z = 1; $z <= 7; $z++)
+					{
+						$myarr = array($i, $z);
+						$_SESSION['rowCol'][] = $myarr;
+						?>
+								<td id="column<?=$z?>"></td>
+						<?php
 					}
+					?>
+					</tr>
+					<?php
 				}
 				?>
 			</table>
 			<table align="center">
 				<tr>
-					<td><input type="submit" name="btn1" value="" /></td>
-					<td><input type="submit" name="btn2" value="" /></td>
-					<td><input type="submit" name="btn3" value="" /></td>
-					<td><input type="submit" name="btn4" value="" /></td>
-					<td><input type="submit" name="btn5" value="" /></td>
-					<td><input type="submit" name="btn6" value="" /></td>
-					<td><input type="submit" name="btn7" value="" /></td>
+					<td><input type="submit" name="1" value="" /></td>
+					<td><input type="submit" name="2" value="" /></td>
+					<td><input type="submit" name="3" value="" /></td>
+					<td><input type="submit" name="4" value="" /></td>
+					<td><input type="submit" name="5" value="" /></td>
+					<td><input type="submit" name="6" value="" /></td>
+					<td><input type="submit" name="7" value="" /></td>
 				</tr>
 			</table>
-				<div>Der zwiete Spieler ist an der Reihe</div>
-				<div>Der erste Spieler ist an der Reihe</div>
 			<?php
-var_dump($_SESSION);
-			if(isset($_POST['btn1']) || isset($_POST['btn2']) || isset($_POST['btn3']))
-			{
-			}
-
-			if(isset($_POST['btnRemove']))
-			{
-			}
-
-			if(isset($_POST['btnStart']))
-			{
-			}
+				if((($_SESSION['spieler'] % 2) == 1))
+				{
 			?>
-			<input type="submit" name="btnStart" value="Spiel starten" />
-			<input type="submit" name="btnRemove" value="Spiel neu starten" />
+					<div>Der erste Spieler ist an der Reihe</div>
+			<?php
+				}
+				else
+				{
+			?>
+					<div>Der zwiete Spieler ist an der Reihe</div>
+			<?php
+				}
+
+			if(isset($_POST['1']))
+			{
+				kreisHinzufuegen($_SESSION['spieler'], $_SESSION['rowCol'], 1);
+				$_SESSION['spieler']++;
+			}
+
+			if(isset($_POST['2']))
+			{
+				kreisHinzufuegen($_SESSION['spieler'], $_SESSION['rowCol'], 2);
+				$_SESSION['spieler']++;
+			}
+
+			if(isset($_POST['3']))
+			{
+				kreisHinzufuegen($_SESSION['spieler'][$alleFelder][1], $_SESSION['rowCol'], 3);
+				$_SESSION['spieler']++;
+			}
+
+			if(isset($_POST['4']))
+			{
+				kreisHinzufuegen($_SESSION['spieler'][$alleFelder][1], $_SESSION['rowCol'], 4);
+				$_SESSION['spieler']++;
+			}
+
+			if(isset($_POST['5']))
+			{
+				kreisHinzufuegen($_SESSION['spieler'][$alleFelder][1], $_SESSION['rowCol'], 5);
+				$_SESSION['spieler']++;
+			}
+
+			if(isset($_POST['6']))
+			{
+				kreisHinzufuegen($_SESSION['spieler'][$alleFelder][1], $_SESSION['rowCol'], 6);
+				$_SESSION['spieler']++;
+			}
+
+			if(isset($_POST['7']))
+			{
+				kreisHinzufuegen($_SESSION['spieler'][$alleFelder][1], $_SESSION['rowCol'], 7);
+				$_SESSION['spieler']++;
+			}
+
+			if(isset($_POST['Remove']) && isset($_SESSION['spieler']))
+			{
+				unset($_SESSION['spieler']);
+				$_SESSION['spieler'] = 1;
+			}
+echo '<pre>'.var_export($_SESSION['spieler'], true).'</pre>';
+
+			?>
+			<input type="submit" name="Start" value="Spiel starten" />
+			<input type="submit" name="Remove" value="Spiel neu starten" />
 		</form>
 	</body>
 </html>
